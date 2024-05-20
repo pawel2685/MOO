@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Moja aplikacja Spring</title>
+    <link rel="stylesheet" type="text/css" href="css/mainStyle.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="logo">
+        <img src="/images/logo.jpg" alt="Logo">
+    </div>
+    <div class="title">
+        <h1>MONITOR OBIEKTÓW OKOŁOZIEMSKICH</h1>
+    </div>
+    <div class="earth"> <!-- Zmieniona klasa z moon na earth -->
+        <!-- Obrazek planety Ziemi zostanie umieszczony tutaj jako tło -->
+    </div>
+</header>
+
+<!-- Body -->
+<div class="container">
+    <section class="section1">
+        <div class="upper-section">
+            <div class="meteor">
+                <img src="/images/meteor.png" alt="Meteor"> <!-- Obrazek meteoru -->
+            </div>
+
+        </div>
+        <div class="lower-section">
+            <div th:if="${orbitClass != null}">
+                Klasa: <span th:text="${orbitClass.orbitClassType}">Klasa</span><br>
+                Opis: <span th:text="${orbitClass.orbitClassDescription}">Opis</span>
+                Średnica Min: <span th:text="${#numbers.formatDecimal(orbitClass.estimatedDiameterMin, 2, 2)}">Średnica Min</span> KM<br>
+                Średnica Max: <span th:text="${#numbers.formatDecimal(orbitClass.estimatedDiameterMax, 2, 2)}">Średnica Max</span> KM
+                Prędkość: <span th:text="${#numbers.formatDecimal(orbitClass.relativeVelocityKmPerHour, 2, 2)}">Prędkość</span> KM/h<br>
+                Dystans: <span th:text="${#numbers.formatDecimal(orbitClass.missDistanceKm, 2, 2)}">Dystans</span> KM
+            </div>
+            <div th:if="${orbitClass == null}">
+                Brak danych do wyświetlenia.
+            </div>
+        </div>
+    </section>
+    <section class="section2">
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>Klasa</th>
+                    <th>Opis</th>
+                    <th>Średnica Min (KM)</th>
+                    <th>Średnica Max (KM)</th>
+                    <th>Prędkość (KM/h)</th>
+                    <th>Dystans (KM)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="orbitClass : ${otherOrbitClasses}">
+                    <td th:text="${orbitClass.orbitClassType}">Klasa</td>
+                    <td th:text="${orbitClass.orbitClassDescription}">Opis</td>
+                    <td th:text="${orbitClass.estimatedDiameterMin}">Średnica Min</td>
+                    <td th:text="${orbitClass.estimatedDiameterMax}">Średnica Max</td>
+                    <td th:text="${orbitClass.relativeVelocityKmPerHour}">Prędkość</td>
+                    <td th:text="${orbitClass.missDistanceKm}">Dystans</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <form action="/save" method="post" class="transparent-form">
+            <button type="submit" class="save-button">Save</button>
+        </form>
+    </section>
+</div>
+</body>
+</html>

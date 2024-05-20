@@ -1,0 +1,200 @@
+/* Style dla tła przypominającego niebo w elemencie header */
+* {
+background-color: #2d404f;
+}
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: linear-gradient(to bottom, #0c1b3e, #050f26);
+background-size: cover; /* Dopasuj rozmiar tła */
+padding: 20px;
+border: 2px solid black;
+border-radius: 10px;
+overflow: hidden; /* Ukryj zawartość poza granicami */
+position: relative;
+}
+.logo {
+flex: 1;
+background-color: transparent;
+}
+h1 {
+background-color: transparent;
+}
+.title {
+flex: 2;
+text-align: center;
+background-color: transparent;
+}
+
+.date {
+flex: 1;
+text-align: right;
+}
+
+.body-content {
+display: flex;
+padding-top: 20px; /* dodajemy odstęp nad treścią */
+}
+
+.left, .right {
+flex: 1; /* dzielimy dostępną przestrzeń równomiernie między sekcje */
+padding: 20px;
+}
+.logo img {
+border: 2px solid black;
+border-radius: 10px;
+box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7);
+max-width: 200px; /* maksymalna szerokość obrazka */
+max-height: 200px; /* maksymalna wysokość obrazka */
+}
+.title {
+flex: 5;
+text-align: center;
+color: white; /* Biały kolor tekstu */
+font-size: 30px;
+width: 100%;
+text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; /* Dodaj cień do tekstu */
+-webkit-text-stroke-width: 0.3px; /* Szerokość konturu tekstu */
+-webkit-text-stroke-color: black; /* Kolor konturu tekstu */
+}
+/* Style dla planety Ziemi */
+.earth {
+position: relative;
+width: 150px;
+height: 150px;
+border-radius: 50%;
+overflow: hidden; /* Ukryj zawartość poza granicami planety */
+background-image: url('/images/moon.png'); /* Dodaj obrazek jako tło planety */
+background-size: cover; /* Dopasuj rozmiar obrazka do okręgu */
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Dodaj cień */
+}
+/* Style dla kontenera */
+.container {
+display: flex;
+flex-align: center;
+justify-content: center;
+}
+
+/* Style dla pierwszej sekcji */
+.section1 {
+height:60vh; /* Elastyczny rozmiar, aby zajmować całą dostępną przestrzeń */
+width: 30vw;
+background-color: #2d404f;
+border:5px solid #000000;
+padding: 50px; /* Wewnętrzny odstęp */
+margin: 10px; /* Margines na dole, oddzielający sekcje */
+background: linear-gradient(to bottom, #0c1b3e, #050f26);
+box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7); /* Cień */
+border-radius: 10px; /* Zakrąglenie narożników */
+}
+/* Style dla górnej części sekcji 1 */
+.upper-section {
+height: 22vh;
+width: 25vw;
+background-color: #2d404f; /* Kolor tła */
+border: 5px solid #000000; /* Grubość i kolor obramowania */
+box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7); /* Cień */
+border-radius: 10px; /* Zakrąglenie narożników */
+}
+/* Style dla obiektu meteoru/asteroidy */
+.meteor {
+width: 150px; /* Szerokość obiektu */
+height: 150px; /* Wysokość obiektu */
+position: absolute; /* Ustawienie pozycji absolutnej */
+left: 15%; /* Wycentrowanie poziome */
+top: 35%; /* Wycentrowanie pionowe */
+transform: translate(-50%, -50%); /* Przesunięcie o połowę szerokości i wysokości */
+animation: rotateMeteor 30s linear infinite; /* Powolna rotacja */
+}
+
+/* Klucz animacji obracającej obiekt */
+@keyframes rotateMeteor {
+from {
+transform: rotate(0deg); /* Początkowy obrót */
+}
+to {
+transform: rotate(-360deg); /* Końcowy obrót */
+}
+}
+
+/* Styl dla obrazka meteoru */
+.meteor img {
+width: 100%; /* Automatyczne dopasowanie szerokości */
+height: auto; /* Automatyczne dopasowanie wysokości */
+overflow: hidden;
+}
+/* Style dla dolnej części sekcji 1 */
+.lower-section {
+height: 35vh;
+width: 25vw;
+margin-top: 20px;
+background-color: #2d404f; /* Kolor tła */
+border: 5px solid #000000; /* Grubość i kolor obramowania */
+box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7); /* Cień */
+border-radius: 10px; /* Zakrąglenie narożników */
+padding: 10px;
+color: white;
+font-size: 35px;
+line-height: 50px;
+}
+
+/* Style dla drugiej sekcji */
+.section2 {
+height: 60vh;
+width: 50vw;
+background-color: #2d404f;
+border:5px solid #000000;
+padding: 50px; /* Wewnętrzny odstęp */
+margin: 10px; /* Margines na górze, oddzielający sekcje */
+background: linear-gradient(to bottom, #0c1b3e, #050f26);
+box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7); /* Cień */
+border-radius: 10px; /* Zakrąglenie narożników */
+}
+
+.table-container {
+height: 55vh; /* Fixed height */
+overflow-y: auto; /* Enable vertical scrolling */
+box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7); /* Cień */
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+th, td {
+padding: 10px;
+border: 1px solid #000000;
+text-align: left;
+color: white;
+}
+
+th {
+background-color: #2d404f;
+color: white;
+position: sticky; /* Make the header sticky */
+top: 0; /* Stick to the top */
+border: 4px solid #000000; /* Border for the header cells */
+}
+.save-button {
+margin-top: 20px;
+padding: 10px 20px;
+background-color: #2d404f;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+width: 10vw;
+height: 5vh;
+font-size: 25px;
+box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7); /* Cień */
+}
+
+.save-button:hover {
+background-color: #3b5067;
+}
+.transparent-form {
+background: transparent;
+text-align: center;
+}

@@ -1,0 +1,50 @@
+@startuml
+class HomeController {
+  + home(model: Model): String
+  + saved(): String
+}
+
+class SaveController {
+  + saveData(): String
+}
+
+class NeoWsService {
+  + getNearEarthObjects(): List<OrbitClassEntity>
+  + getFirstNearEarthObject(): OrbitClassEntity
+}
+
+class NeoWsSaveService {
+  + saveNearEarthObjects(): void
+}
+
+class RestTemplate
+
+class ObjectMapper
+
+class OrbitClassRepository {
+  + save(entity: OrbitClassEntity): OrbitClassEntity
+  + findAll(): List<OrbitClassEntity>
+}
+
+class OrbitClassEntity {
+  - id: Long
+  - orbitClassType: String
+  - orbitClassDescription: String
+  - estimatedDiameterMin: double
+  - estimatedDiameterMax: double
+  - relativeVelocityKmPerHour: double
+  - missDistanceKm: double
+}
+
+HomeController --> NeoWsService
+HomeController --> SaveController
+SaveController --> NeoWsSaveService
+NeoWsService --> RestTemplate
+NeoWsService --> ObjectMapper
+NeoWsSaveService --> RestTemplate
+NeoWsSaveService --> ObjectMapper
+NeoWsSaveService --> OrbitClassRepository
+NeoWsService --> OrbitClassRepository
+OrbitClassRepository --> OrbitClassEntity
+@enduml
+
